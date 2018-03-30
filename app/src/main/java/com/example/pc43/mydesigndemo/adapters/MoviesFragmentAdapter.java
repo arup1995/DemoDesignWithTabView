@@ -15,24 +15,23 @@ import com.example.pc43.mydesigndemo.models.Userresponse;
 
 import java.util.List;
 
-public class BooksFragmentAdapter extends RecyclerView.Adapter<BooksFragmentAdapter.MyViewHolder> {
+public class MoviesFragmentAdapter extends RecyclerView.Adapter<MoviesFragmentAdapter.MyViewHolder> {
     private List<Recycler> recycler;
     private final Context context;
 
-    public BooksFragmentAdapter(List<Recycler> recycler, Context context) {
+    public MoviesFragmentAdapter(List<Recycler> recycler, Context context) {
         this.recycler = recycler;
         this.context = context;
     }
-
     @NonNull
     @Override
-    public BooksFragmentAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_books_child, parent, false);
-        return new BooksFragmentAdapter.MyViewHolder(itemView);
+    public MoviesFragmentAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_movies_child, parent, false);
+        return new MoviesFragmentAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BooksFragmentAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MoviesFragmentAdapter.MyViewHolder holder, int position) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         linearLayoutManager.setReverseLayout(true);
@@ -40,7 +39,7 @@ public class BooksFragmentAdapter extends RecyclerView.Adapter<BooksFragmentAdap
         holder.mRecyclerView.setLayoutManager(linearLayoutManager);
         //holder.mrecyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true));
         Userresponse userresponse = ResponseSingleton.getInstance().getUserResponseData();
-        holder.mRecyclerView.setAdapter(new BooksFragmentChildAdapter(userresponse.getRecycler().get(position).getInnerChild(), context));
+        holder.mRecyclerView.setAdapter(new MoviesFragmentChildAdapter(userresponse.getRecycler().get(position).getInnerChild(), context));
 
     }
 
@@ -48,8 +47,7 @@ public class BooksFragmentAdapter extends RecyclerView.Adapter<BooksFragmentAdap
     public int getItemCount() {
         return recycler.size();
     }
-
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder{
         RecyclerView mRecyclerView;
 
         MyViewHolder(View itemView) {
