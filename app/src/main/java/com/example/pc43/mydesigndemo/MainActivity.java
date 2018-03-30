@@ -9,10 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.pc43.mydesigndemo.fragments.Books;
-import com.example.pc43.mydesigndemo.fragments.Games;
-import com.example.pc43.mydesigndemo.fragments.Movies;
-import com.example.pc43.mydesigndemo.models.Userresponse;
+import com.example.pc43.mydesigndemo.fragments.BooksFragment;
+import com.example.pc43.mydesigndemo.fragments.GamesFragment;
+import com.example.pc43.mydesigndemo.fragments.MoviesFragment;
+import com.example.pc43.mydesigndemo.models.UserResponse;
 import com.example.pc43.mydesigndemo.mydesigndemosdk.MyDesignDemoSdk;
 import com.example.pc43.mydesigndemo.mydesigndemosdk.Service;
 
@@ -31,18 +31,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        loadadata();
-        TabLayout mtabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        loadAllData();
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        mtabLayout.setupWithViewPager(mViewPager);
+        tabLayout.setupWithViewPager(mViewPager);
 
     }
 
     public void setUpViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Games(), "Games");
-        adapter.addFragment(new Movies(), "Movies");
-        adapter.addFragment(new Books(), "Books");
+        adapter.addFragment(new GamesFragment(), "GamesFragment");
+        adapter.addFragment(new MoviesFragment(), "MoviesFragment");
+        adapter.addFragment(new BooksFragment(), "BooksFragment");
         viewPager.setAdapter(adapter);
 
     }
@@ -77,12 +77,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void loadadata() {
+    private void loadAllData() {
         Service service = new MyDesignDemoSdk.Builder().build(this).getService();
         //mrecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        service.requestUserDetails().enqueue(new Callback<Userresponse>() {
+        service.requestUserDetails().enqueue(new Callback<UserResponse>() {
             @Override
-            public void onResponse(Call<Userresponse> call, Response<Userresponse> response) {
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                 Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                 if (response.isSuccessful()) {
                     ResponseSingleton.getInstance().setUserResponseData(response.body());
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Userresponse> call, Throwable t) {
+            public void onFailure(Call<UserResponse> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
             }
         });

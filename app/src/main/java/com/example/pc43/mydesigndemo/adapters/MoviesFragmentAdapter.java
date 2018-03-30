@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.pc43.mydesigndemo.R;
 import com.example.pc43.mydesigndemo.ResponseSingleton;
 import com.example.pc43.mydesigndemo.models.Recycler;
-import com.example.pc43.mydesigndemo.models.Userresponse;
+import com.example.pc43.mydesigndemo.models.UserResponse;
 
 import java.util.List;
 
@@ -38,8 +38,8 @@ public class MoviesFragmentAdapter extends RecyclerView.Adapter<MoviesFragmentAd
         linearLayoutManager.setStackFromEnd(true);
         holder.mRecyclerView.setLayoutManager(linearLayoutManager);
         //holder.mrecyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true));
-        Userresponse userresponse = ResponseSingleton.getInstance().getUserResponseData();
-        holder.mRecyclerView.setAdapter(new MoviesFragmentChildAdapter(userresponse.getRecycler().get(position).getInnerChild(), context));
+        UserResponse userResponse = ResponseSingleton.getInstance().getUserResponseData();
+        holder.mRecyclerView.setAdapter(new MoviesFragmentChildAdapter(userResponse.getRecycler().get(position).getInnerChild(), context));
 
     }
 

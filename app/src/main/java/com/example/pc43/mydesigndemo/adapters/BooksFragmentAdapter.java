@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.pc43.mydesigndemo.R;
 import com.example.pc43.mydesigndemo.ResponseSingleton;
 import com.example.pc43.mydesigndemo.models.Recycler;
-import com.example.pc43.mydesigndemo.models.Userresponse;
+import com.example.pc43.mydesigndemo.models.UserResponse;
 
 import java.util.List;
 
@@ -39,8 +39,8 @@ public class BooksFragmentAdapter extends RecyclerView.Adapter<BooksFragmentAdap
         linearLayoutManager.setStackFromEnd(true);
         holder.mRecyclerView.setLayoutManager(linearLayoutManager);
         //holder.mrecyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true));
-        Userresponse userresponse = ResponseSingleton.getInstance().getUserResponseData();
-        holder.mRecyclerView.setAdapter(new BooksFragmentChildAdapter(userresponse.getRecycler().get(position).getInnerChild(), context));
+        UserResponse userResponse = ResponseSingleton.getInstance().getUserResponseData();
+        holder.mRecyclerView.setAdapter(new BooksFragmentChildAdapter(userResponse.getRecycler().get(position).getInnerChild(), context));
 
     }
 

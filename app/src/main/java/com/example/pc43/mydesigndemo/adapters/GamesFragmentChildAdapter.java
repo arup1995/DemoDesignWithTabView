@@ -12,16 +12,14 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.pc43.mydesigndemo.R;
 import com.example.pc43.mydesigndemo.models.InnerChild;
-import com.example.pc43.mydesigndemo.models.Recycler;
-import com.example.pc43.mydesigndemo.models.Userresponse;
 
 import java.util.List;
 
-public class GamesChildAdapter extends RecyclerView.Adapter<GamesChildAdapter.MyViewHolder> {
+public class GamesFragmentChildAdapter extends RecyclerView.Adapter<GamesFragmentChildAdapter.MyViewHolder> {
     private List<InnerChild> innerChildList;
     private final Context context;
 
-    GamesChildAdapter(List<InnerChild> innerChildList, Context context) {
+    GamesFragmentChildAdapter(List<InnerChild> innerChildList, Context context) {
         this.innerChildList = innerChildList;
         this.context = context;
     }
@@ -29,13 +27,13 @@ public class GamesChildAdapter extends RecyclerView.Adapter<GamesChildAdapter.My
 
     @NonNull
     @Override
-    public GamesChildAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GamesFragmentChildAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_games_childone, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GamesChildAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GamesFragmentChildAdapter.MyViewHolder holder, int position) {
         InnerChild innerChild = innerChildList.get(position);
         holder.mTitle.setText(innerChild.getTitle());
         Glide.with(context).load(innerChild.getImageUrl()).into(holder.mProfile);

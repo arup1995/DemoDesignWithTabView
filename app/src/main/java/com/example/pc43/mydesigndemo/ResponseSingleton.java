@@ -1,12 +1,12 @@
 package com.example.pc43.mydesigndemo;
 
 import com.example.pc43.mydesigndemo.models.Recycler;
-import com.example.pc43.mydesigndemo.models.Userresponse;
+import com.example.pc43.mydesigndemo.models.UserResponse;
 
 public class ResponseSingleton {
     private static ResponseSingleton instance;
-    private Userresponse userResponseData;
-    private Recycler recycler;
+    private UserResponse userResponseData;
+
 
     public static ResponseSingleton getInstance() {
         if (instance == null) {
@@ -18,19 +18,13 @@ public class ResponseSingleton {
     private ResponseSingleton() {
     }
 
-    public void setUserResponseData(Userresponse userResponseData) {
+    public void setUserResponseData(UserResponse userResponseData) {
         this.userResponseData = userResponseData;
     }
 
-    public Userresponse getUserResponseData() {
+    public UserResponse getUserResponseData() {
         return userResponseData;
     }
 
-    public Recycler getRecycler() {
-        return recycler;
-    }
 
-    public void setRecycler(Recycler recycler) {
-        this.recycler = recycler;
-    }
 }

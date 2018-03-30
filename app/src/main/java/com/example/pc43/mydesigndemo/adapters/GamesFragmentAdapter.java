@@ -11,37 +11,37 @@ import android.view.ViewGroup;
 import com.example.pc43.mydesigndemo.R;
 import com.example.pc43.mydesigndemo.ResponseSingleton;
 import com.example.pc43.mydesigndemo.models.Recycler;
-import com.example.pc43.mydesigndemo.models.Userresponse;
+import com.example.pc43.mydesigndemo.models.UserResponse;
 
 import java.util.List;
 
-public class Gamesadapter extends RecyclerView.Adapter<Gamesadapter.MyViewHolder> {
+public class GamesFragmentAdapter extends RecyclerView.Adapter<GamesFragmentAdapter.MyViewHolder> {
 
     private List<Recycler> recycler;
     private final Context context;
 
-    public Gamesadapter(List<Recycler> recycler, Context context) {
+    public GamesFragmentAdapter(List<Recycler> recycler, Context context) {
         this.recycler = recycler;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public Gamesadapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GamesFragmentAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_games_child, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Gamesadapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GamesFragmentAdapter.MyViewHolder holder, int position) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
         holder.mRecyclerView.setLayoutManager(linearLayoutManager);
         //holder.mrecyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true));
-        Userresponse userresponse = ResponseSingleton.getInstance().getUserResponseData();
-        holder.mRecyclerView.setAdapter(new GamesChildAdapter(userresponse.getRecycler().get(position).getInnerChild(), context));
+        UserResponse userResponse = ResponseSingleton.getInstance().getUserResponseData();
+        holder.mRecyclerView.setAdapter(new GamesFragmentChildAdapter(userResponse.getRecycler().get(position).getInnerChild(), context));
     }
 
     @Override

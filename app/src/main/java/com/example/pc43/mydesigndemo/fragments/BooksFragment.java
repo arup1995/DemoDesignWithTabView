@@ -11,17 +11,16 @@ import android.view.ViewGroup;
 
 import com.example.pc43.mydesigndemo.R;
 import com.example.pc43.mydesigndemo.ResponseSingleton;
-import com.example.pc43.mydesigndemo.adapters.Gamesadapter;
-import com.example.pc43.mydesigndemo.adapters.MoviesFragmentAdapter;
-import com.example.pc43.mydesigndemo.models.Userresponse;
+import com.example.pc43.mydesigndemo.adapters.BooksFragmentAdapter;
+import com.example.pc43.mydesigndemo.models.UserResponse;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Movies extends Fragment {
+public class BooksFragment extends Fragment {
 
 
-    public Movies() {
+    public BooksFragment() {
         // Required empty public constructor
     }
 
@@ -30,13 +29,13 @@ public class Movies extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_movies, container, false);
-        RecyclerView mRecyclerViews = (RecyclerView) view.findViewById(R.id.recyclerView);
+        View view= inflater.inflate(R.layout.fragment_books, container, false);
+        RecyclerView recyclerViews = (RecyclerView) view.findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        mRecyclerViews.setLayoutManager(linearLayoutManager);
-        mRecyclerViews.hasFixedSize();
-        Userresponse userresponse = ResponseSingleton.getInstance().getUserResponseData();
-        mRecyclerViews.setAdapter(new MoviesFragmentAdapter(userresponse.getRecycler(), getActivity()));
+        recyclerViews.setLayoutManager(linearLayoutManager);
+        recyclerViews.hasFixedSize();
+        UserResponse userResponse = ResponseSingleton.getInstance().getUserResponseData();
+        recyclerViews.setAdapter(new BooksFragmentAdapter(userResponse.getRecycler(), getActivity()));
         return view;
     }
 
